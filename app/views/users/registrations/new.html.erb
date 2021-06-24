@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 style="padding: 20px 0;">新規会員登録</h3>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <label for="name">ユーザーネーム</label>
+        <div class="form-group">
+          <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: " 例：太郎" %>
+        </div>
+
+        <label for="mail">メールアドレス</label>
+        <div class="form-group">
+          <%= f.email_field :email, autocomplete: "email", class: 'form-control', placeholder: "例：sample@wheelchair.com" %>
+        </div>
+
+        <label for="password">パスワード</label>
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "6文字以上（半角英数字）" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: "確認のため再度ご入力ください。" %>
+        </div>
+
+        <label for="profile_image_id">プロフィール画像</label>
+        <div class="form-row">
+          <div class="form-group col-lg-6">
+            <p><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></p>
+          </div>
+        </div>
+
+        <label for="introduction">自己紹介</label>
+        <div class="form-group">
+          <%= f.text_area :introduction, autocomplete: "introduction", class: 'form-control', placeholder: "自己紹介" %>
+        </div>
+
+        <label for="user_status">ステータス</label>
+        <div class="form-group">
+          <%= f.radio_button :user_status, true %>
+          <%= f.label :user_status, "ランナー" %>
+        </td>
+          <%= f.radio_button :user_status, false %>
+          <%= f.label :user_status, "ボランティア" %>
+        </div>
+
+        <label for="experience">経験年数</label>
+        <div class="form-group">
+          <%= f.number_field :experience, :value => 0, min: 0, max: 100 %>
+          <%#= f.select :experience, [["なし", 0],1,2,3,4,5,6,7,8,9,["10年以上", 10] %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "新規登録", class: "btn btn-success mb-5" %>
+        </div>
+        <% end %>
+        <h4>既に登録済みの方</h4>
+        <p><%= link_to "こちら",  new_user_session_path %><span>からログインしてください。</span></p>
+    </div>
+  </div>
+</div>

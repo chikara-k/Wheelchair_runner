@@ -1,0 +1,46 @@
+<div class="container font-mincho">
+  <div class="row">
+    <div class="form-group col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="mt-3">ログイン</h3>
+          <p class="mt-4">会員の方はこちらからログイン</p>
+        </div>
+      </div>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <div class="row">
+          <div class="col-lg-10 mt-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "登録メールアドレス（半角英数字）" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10 mt-3">
+            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: "パスワード（半角英数字）" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 mt-4">
+            <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="mt-3">新規会員登録</h3>
+          <h6 class="mt-4">1. おすすめの場所を投稿できます</h6>
+          <h6 class="mt-4">2. 他のユーザーの投稿にいいねができます</h6>
+          <h6 class="mt-4">3. イベント(練習会など)を開催できます</h6>
+          <h6 class="mt-4">4. イベントに参加できます</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-5 mt-2">
+           <%= link_to "新規会員登録はこちら", new_user_registration_path, class: "btn btn-secondary btn-block" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
