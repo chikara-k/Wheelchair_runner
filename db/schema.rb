@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_044015) do
     t.string "name", null: false
     t.string "profile_image_id"
     t.text "introduction"
-    t.boolean "user_status", null: false
+    t.integer "user_status", null: false
     t.integer "experience"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false

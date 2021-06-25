@@ -36,17 +36,16 @@
 
         <label for="user_status">ステータス</label>
         <div class="form-group">
-          <%= f.radio_button :user_status, true %>
+          <%= f.radio_button :user_status, "ランナー" %>
           <%= f.label :user_status, "ランナー" %>
         </td>
-          <%= f.radio_button :user_status, false %>
+          <%= f.radio_button :user_status, "ボランティア" %>
           <%= f.label :user_status, "ボランティア" %>
         </div>
 
         <label for="experience">経験年数</label>
         <div class="form-group">
           <%= f.number_field :experience, :value => 0, min: 0, max: 100 %>
-          <%#= f.select :experience, [["なし", 0],1,2,3,4,5,6,7,8,9,["10年以上", 10] %>
         </div>
 
         <div class="actions">

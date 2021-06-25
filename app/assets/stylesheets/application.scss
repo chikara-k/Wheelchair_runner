@@ -14,3 +14,10 @@
  *= require_self
  */
 @import "bootstrap";
+
+.v_line_right {
+  border-right: solid;
+  border-right-width: 1px;
+  border-color: #E6E7E8;
+  height: 700px;
+}
