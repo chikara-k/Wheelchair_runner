@@ -19,5 +19,14 @@
   border-right: solid;
   border-right-width: 1px;
   border-color: #E6E7E8;
-  height: 700px;
+  position: fixed;
+  max-width: 20%;
+  height: 100%;
 }
+// .v_line_right {
+//   position: sticky;
+//   top: 0;
+//   border-right: 1px solid #cccccc;
+//   border-bottom: 1px solid #cccccc;
+//   height: 100%;
+// }

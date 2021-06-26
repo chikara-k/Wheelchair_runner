@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_044015) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
-    t.string "image_id"
+    t.text "image_id", null: false
     t.text "introduction", null: false
     t.boolean "toilet"
     t.integer "recommend_level"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_044015) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "profile_image_id"
+    t.text "profile_image_id"
     t.text "introduction"
     t.integer "user_status", null: false
     t.integer "experience"

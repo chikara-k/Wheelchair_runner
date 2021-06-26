@@ -4,8 +4,11 @@ class Post < ApplicationRecord
   belongs_to :user
 
   attachment :image
+  # include ImageUploader[:image]
 
   validates :name, presence: true
   validates :introduction, presence: true
   validates :image, presence: true
+
+  enum parking: { "無料あり": 0, "有料あり": 1, "なし": 3 }
 end
