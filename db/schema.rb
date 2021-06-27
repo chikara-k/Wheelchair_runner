@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_044015) do
     t.integer "road_level"
     t.integer "parking"
     t.boolean "rental_bicycle"
+    t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

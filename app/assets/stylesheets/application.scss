@@ -20,13 +20,11 @@
   border-right-width: 1px;
   border-color: #E6E7E8;
   position: fixed;
-  max-width: 20%;
+  max-width: 270px;
   height: 100%;
 }
-// .v_line_right {
-//   position: sticky;
-//   top: 0;
-//   border-right: 1px solid #cccccc;
-//   border-bottom: 1px solid #cccccc;
-//   height: 100%;
-// }
+
+.profile_data_content {
+    background-color: #f0f0f0;
+    width: 50px;
+}

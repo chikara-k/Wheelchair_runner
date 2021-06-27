@@ -42,7 +42,8 @@ Post.create!(
       recommend_level: 4,
       road_level: 2,
       parking: 1,
-      rental_bicycle: false
+      rental_bicycle: false,
+      address: "宮崎県宮崎市○○○２ー７ー３"
     },
     {
       user_id: "1",
@@ -50,21 +51,23 @@ Post.create!(
       image: File.open('./app/assets/images/no_image.png'),
       introduction: "とても良いところでした",
       toilet: true,
-      recommend_level: 4,
-      road_level: 2,
+      recommend_level: 5,
+      road_level: 3,
       parking: 3,
-      rental_bicycle: false
+      rental_bicycle: false,
+      address: "宮崎県宮崎市○○○２ー７ー３"
     },
     {
-      user_id: "1",
+      user_id: "2",
       name: "運動公園",
       image: File.open('./app/assets/images/no_image.png'),
       introduction: "とても良いところでした",
       toilet: true,
-      recommend_level: 4,
-      road_level: 2,
+      recommend_level: 3,
+      road_level: 1,
       parking: 0,
-      rental_bicycle: false
+      rental_bicycle: true,
+      address: "宮崎県宮崎市○○○２ー７ー３"
     },
   ]
 )

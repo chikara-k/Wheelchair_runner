@@ -1,0 +1,100 @@
+<% all_posts.each do |pos| %>
+  <div class="row mb-1">
+    <div class="col-md-12">
+      <%= link_to mypage_path(pos.user_id), class: "text-dark text-decoration-none" do %>
+        <div>
+          <%= image_tag pos.user.profile_image_url, :size => '40x40' %>
+          <%= pos.user.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <%= link_to post_path(pos) do %>
+        <%= attachment_image_tag pos, :image, :size => '170x220' %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to post_path(pos), class: "text-dark text-decoration-none" do %>
+            <h5 class="font-weight-bold"><%= pos.name %></h5>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <ol class="list-unstyled">
+            <li>おすすめ度</li>
+            <li>レベル</li>
+            <li>多目的トイレ</li>
+            <li>駐車場</li>
+            <li>レンタル自転車</li>
+          </ol>
+        </div>
+        <div class="col-md-6">
+          <ol class="list-unstyled">
+            <% if pos.recommend_level == 1 %>
+              <li>★</li>
+            <% elsif pos.recommend_level == 2 %>
+              <li>★★</li>
+            <% elsif pos.recommend_level == 3 %>
+              <li>★★★</li>
+            <% elsif pos.recommend_level == 4 %>
+              <li>★★★★</li>
+            <% elsif pos.recommend_level == 5 %>
+              <li>★★★★★</li>
+            <% else %>
+              <li>ー</li>
+            <% end %>
+
+            <% if pos.road_level == nil %>
+              <li>ー</li>
+            <% else %>
+              <li><b>Lv.<%= pos.road_level %></b></li>
+            <% end %>
+
+            <% if pos.toilet == true %>
+              <li class="fas fa-toilet">あり</li><br>
+            <% elsif pos.toilet == false %>
+              <li>なし</li>
+            <% else %>
+              <li>ー</li>
+            <% end %>
+
+            <% if pos.parking == "無料あり" %>
+              <li class="fas fa-parking">あり(無料)</li>
+            <% elsif pos.parking == "有料あり" %>
+              <li class="fas fa-parking">あり(有料)</li>
+            <% elsif pos.parking == "なし" %>
+              <li>なし</li>
+            <% else %>
+              <li>ー</li>
+            <% end %>
+
+            <% if pos.rental_bicycle == true %>
+              <li class="fas fa-bicycle"> あり</li>
+            <% elsif pos.rental_bicycle == false %>
+              <li>なし</li>
+            <% else %>
+              <li>ー</li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          ー〒住所ー<br>
+          <%= pos.address %>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-12">
+          <%= link_to "コメント", root_path, class: "fas fa-comment" %>
+          <%= link_to "いいね", root_path, class: "fas fa-thumbs-up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

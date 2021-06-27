@@ -12,5 +12,10 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   resources :posts
-  resources :users
+  resources :mypages, only: [:show, :edit, :update] do
+    member do
+      get "confirm"
+      patch "hide"
+    end
+  end
 end

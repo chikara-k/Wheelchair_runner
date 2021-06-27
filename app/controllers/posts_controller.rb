@@ -24,21 +24,13 @@ class PostsController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
     @post = Post.find(params[:id])
+    @user_mypage = @post.user
   end
 
   def edit
     @post = Post.find(params[:id])
-  end
-
-  def destroy
-    @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:notice] = "投稿を削除しました"
-      redirect_to posts_path
-    else
-      render :index
-    end
   end
 
   def update
@@ -51,11 +43,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "投稿を削除しました"
+      redirect_to posts_path
+    else
+      render :index
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:user_id,
                                  :name,
+                                 :address,
                                  :image,
                                  :introduction,
                                  :toilet,

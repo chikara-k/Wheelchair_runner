@@ -10,6 +10,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :road_level
       t.integer :parking
       t.boolean :rental_bicycle
+      t.text :address
 
       t.timestamps
     end

@@ -1,2 +1,114 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <%= render 'posts/left_side', user: @user %>
+    </div>
+
+    <div class="col-md-6 pt-4 pl-3 border-right">
+      <div class="row mb-1">
+        <div class="col-md-12">
+          <%= link_to mypage_path(@user_mypage), class: "text-dark text-decoration-none" do %>
+            <div>
+              <%= image_tag @post.user.profile_image_url, :size => '40x40' %>
+              <%= @post.user.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <%= link_to post_path(@post) do %>
+            <%= attachment_image_tag @post, :image, :size => '170x220' %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-12">
+              <%= link_to post_path(@post), :style => "color:black;" do %>
+                <h5 class="font-weight-bold"><%= @post.name %></h5>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <ol class="list-unstyled">
+                <li>おすすめ度</li>
+                <li>レベル</li>
+                <li>多目的トイレ</li>
+                <li>駐車場</li>
+                <li>レンタル自転車</li>
+              </ol>
+            </div>
+            <div class="col-md-6">
+              <ol class="list-unstyled">
+                <% if @post.recommend_level == 1 %>
+                  <li>★</li>
+                <% elsif @post.recommend_level == 2 %>
+                  <li>★★</li>
+                <% elsif @post.recommend_level == 3 %>
+                  <li>★★★</li>
+                <% elsif @post.recommend_level == 4 %>
+                  <li>★★★★</li>
+                <% elsif @post.recommend_level == 5 %>
+                  <li>★★★★★</li>
+                <% else %>
+                  <li>ー</li>
+                <% end %>
+
+                <li><b>Lv.<%= @post.road_level %></b></li>
+
+                <% if @post.toilet == true %>
+                  <li class="fas fa-toilet">あり</li><br>
+                <% elsif @post.toilet == false %>
+                  <li>なし</li>
+                <% else %>
+                  <li>ー</li>
+                <% end %>
+
+                <% if @post.parking == "無料あり" %>
+                  <li class="fas fa-parking">あり(無料)</li>
+                <% elsif @post.parking == "有料あり" %>
+                  <li class="fas fa-parking">あり(有料)</li>
+                <% elsif @post.parking == "なし" %>
+                  <li>なし</li>
+                <% else %>
+                  <li>ー</li>
+                <% end %>
+
+                <% if @post.rental_bicycle == true %>
+                  <li class="fas fa-bicycle"> あり</li>
+                <% elsif @post.rental_bicycle == false %>
+                  <li>なし</li>
+                <% else %>
+                  <li>ー</li>
+                <% end %>
+              </ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              ー〒住所ー<br>
+              <%= @post.address %>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <% if @post.user == current_user %>
+                <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary"%>
+                <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger"%>
+              <% else %>
+                <%= link_to "いいね", root_path, class: "fas fa-thumbs-up" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row border-top border-bottom">
+        <h2>コメント記入欄</h2>
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <%= render 'posts/right_side' %>
+    </div>
+  </div>
+</div>

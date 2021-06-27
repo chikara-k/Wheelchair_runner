@@ -1,10 +1,15 @@
 <div class="container">
+  <h3 style="padding: 20px 0;">新規投稿</h3>
   <div class="row">
     <%= form_with model: @post, url: posts_path, local:true do |f| %>
       <table class="table table-borderless">
         <tr class="d-flex">
           <th class="col-4"><%= f.label :"場所名" %></th>
-          <td class="col-6"><%= f.text_field :name, size: 40 %></td>
+          <td class="col-6"><%= f.text_field :name, size: 50 %></td>
+        </tr>
+        <tr class="d-flex">
+          <th class="col-4"><%= f.label :"住所" %></th>
+          <td class="col-8"><%= f.text_field :address, size: 50 %></td>
         </tr>
         <tr class="d-flex">
           <th class="col-4"><%= f.label :"紹介画像" %></th>
@@ -14,7 +19,7 @@
         </tr>
         <tr class="d-flex">
           <th class="col-4"><%= f.label :"紹介文" %></th>
-          <td class="col-6"><%= f.text_area :introduction, size: "40x4" %></td>
+          <td class="col-6"><%= f.text_area :introduction, size: "50x4" %></td>
         </tr>
         <tr class="d-flex">
           <th class="col-4"><%= f.label :"おすすめ度" %></th>
