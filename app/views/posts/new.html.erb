@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= form_with model: @post, url: posts_path(@post), local:true do |f| %>
+    <%= form_with model: @post, url: posts_path, local:true do |f| %>
       <table class="table table-borderless">
         <tr class="d-flex">
           <th class="col-4"><%= f.label :"場所名" %></th>
@@ -10,7 +10,6 @@
           <th class="col-4"><%= f.label :"紹介画像" %></th>
           <td class="col-6">
             <%= f.attachment_field :image %>
-            <%#= f.hidden_field :image, value: current_user.cached_image_data %>
           </td>
         </tr>
         <tr class="d-flex">

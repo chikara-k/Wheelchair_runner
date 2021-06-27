@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_044015) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
-    t.text "image_id", null: false
+    t.text "image_id"
     t.text "introduction", null: false
     t.boolean "toilet"
     t.integer "recommend_level"

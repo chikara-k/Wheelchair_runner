@@ -88,7 +88,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
-    content_disposition (1.0.0)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -98,8 +97,6 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    down (5.2.2)
-      addressable (~> 2.5)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.3)
@@ -218,9 +215,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    shrine (3.4.0)
-      content_disposition (~> 1.0)
-      down (~> 5.1)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -284,7 +278,6 @@ DEPENDENCIES
   refile-mini_magick
   sass-rails (~> 5.0)
   selenium-webdriver
-  shrine
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

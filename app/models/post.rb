@@ -1,10 +1,9 @@
 class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  belongs_to :user
+  belongs_to :user, optional: true
 
   attachment :image
-  # include ImageUploader[:image]
 
   validates :name, presence: true
   validates :introduction, presence: true

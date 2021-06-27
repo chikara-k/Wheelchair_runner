@@ -12,8 +12,9 @@ class PostsController < ApplicationController
   end
 
   def create
+    # paramsに.merge(user_id: current_user.id)を記載することで解決
     @post = Post.new(post_params)
-    if @post.save
+    if @post.save!
       flash[:success] ="投稿しました"
       redirect_to posts_path
     else
@@ -61,6 +62,6 @@ class PostsController < ApplicationController
                                  :recommend_level,
                                  :road_level,
                                  :parking,
-                                 :rental_bicycle)
+                                 :rental_bicycle).merge(user_id: current_user.id)
   end
 end
