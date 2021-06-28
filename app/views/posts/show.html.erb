@@ -96,15 +96,35 @@
               <% if @post.user == current_user %>
                 <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary"%>
                 <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger"%>
-              <% else %>
-                <%= link_to "いいね", root_path, class: "fas fa-thumbs-up" %>
               <% end %>
             </div>
           </div>
         </div>
       </div>
-      <div class="row border-top border-bottom">
-        <h2>コメント記入欄</h2>
+      <% @post.comments.each do |comment| %>
+        <div class="row border-top pb-3">
+          <div class="col-md-12">
+              <div class="text-right"><%= l comment.created_at %></div>
+              <p>
+                <%= image_tag comment.user.profile_image_url, :size => '40x40' %>
+                <%= comment.user.name %>
+              </p>
+              <%= comment.body %>
+              <% if comment.user == current_user %>
+                <div class="text-right">
+                  <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                </div>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="row border-top pt-3 pb-3">
+        <div class="col-md-12">
+          <%= form_with(model:[@post, @comment], local: true) do |f| %>
+            <p><%= f.text_area :body, class: 'form-control', placeholder: "コメント" %></p>
+            <div class="text-right"><%= f.submit "送信する" %></div>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-md-3 text-center">

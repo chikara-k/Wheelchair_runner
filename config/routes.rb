@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   end
 
   root to: 'homes#top'
-  resources :posts
+  resources :posts do
+    resources :comments, only:[:create, :destroy]
+    resource :likes, only: [:create, :destroy]
+  end
   resources :mypages, only: [:show, :edit, :update] do
     member do
       get "confirm"

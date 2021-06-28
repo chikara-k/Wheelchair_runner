@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @all_posts = Post.all
+    @all_posts = Post.all.order(id: "DESC")
     # @user_posts = current_user.posts
   end
 
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = Post.find(params[:id])
     @user_mypage = @post.user
+    @comment = Comment.new
   end
 
   def edit
