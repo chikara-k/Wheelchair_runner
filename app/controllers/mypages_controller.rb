@@ -3,6 +3,8 @@ class MypagesController < ApplicationController
     @user = User.find(current_user.id)
     @user_mypage = User.find(params[:id])
     @all_posts = @user_mypage.posts
+    posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @ranking_posts = posts.first(5)
   end
 
   def edit

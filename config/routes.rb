@@ -21,4 +21,6 @@ Rails.application.routes.draw do
       patch "hide"
     end
   end
+  resources :events
+  resources :event_users, only: [:index, :create, :update, :destroy]
 end

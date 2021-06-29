@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @all_posts = Post.all.order(id: "DESC")
-    # @user_posts = current_user.posts
+    posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @ranking_posts = posts.first(5)
   end
 
   def new
@@ -28,6 +29,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user_mypage = @post.user
     @comment = Comment.new
+    posts = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @ranking_posts = posts.first(5)
   end
 
   def edit
