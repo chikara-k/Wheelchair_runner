@@ -23,18 +23,19 @@ ActiveRecord::Schema.define(version: 2021_06_20_044015) do
   create_table "event_users", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "event_id", null: false
+    t.boolean "is_attend", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "date", null: false
+    t.integer "user_id", null: false
+    t.string "title", null: false
     t.datetime "begin_time", null: false
     t.datetime "finish_time", null: false
-    t.string "place", null: false
+    t.string "place"
     t.text "memo"
-    t.integer "genre", null: false
+    t.integer "genre"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

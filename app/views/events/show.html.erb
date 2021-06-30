@@ -1,2 +1,64 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container">
+  <div class ="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <h3 class="text-center" style="padding: 20px 0;">〜 イベント詳細 〜</h3>
+      <table class="table table-borderless">
+        <tr class="d-flex">
+          <th class="col-md-4">タイトル</th>
+          <td><%= @event.title %></td>
+        </tr>
+        <tr class="d-flex">
+          <th class="col-md-4">開始日時</th>
+          <td><%= @event.begin_time %></td>
+        </tr>
+        <tr class="d-flex">
+          <th class="col-md-4">終了日時</th>
+          <td><%= @event.finish_time %></td>
+        </tr>
+        <tr class="d-flex">
+          <th class="col-md-4">場所</th>
+          <td><%= @event.place %></td>
+        </tr>
+        <tr class="d-flex">
+          <th class="col-md-4">ジャンル</th>
+          <td><%= @event.genre %></td>
+        </tr>
+        <tr class="d-flex">
+          <th class="col-md-4">メモ</th>
+          <td><%= @event.memo %></td>
+        </tr>
+      </table>
+
+      <% if @event.image_url == nil %>
+      <div></div>
+      <% else %>
+        <div class="col-md-12 text-center">
+          <%= image_tag @event.image_url, :size => '400x300', fallback: "no_image.png" %>
+        </div>
+      <% end %>
+      <div class="row mt-4 mb-5">
+        <% if @event.user == current_user %>
+          <div class="col-md-4 ml-4">
+            <%= link_to "編集", edit_event_path(@event), class: "btn btn-outline-secondary btn-block"%>
+          </div>
+          <div class="col-md-4 ml-4">
+            <%= link_to "削除", event_path(@event), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger btn-block"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4 border-left text-center">
+      <h3 class="text-center" style="padding: 20px 0;">〜 参加者一覧 〜</h3>
+      <h5><%= @event.user.name %>（作成者）</h5>
+      <%# @event_users.each do |f| %>
+        <%#= f.user.name %>
+      <%# end %>
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

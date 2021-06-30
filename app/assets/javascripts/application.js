@@ -56,8 +56,8 @@ $(function () {
                 //終了時刻がないイベントの表示間隔
                 defaultTimedEventDuration: '03:00:00',
                 buttonText: {
-                    prev: '前',
-                    next: '次',
+                    prev: '前月',
+                    next: '翌月',
                     prevYear: '前年',
                     nextYear: '翌年',
                     today: '今日',

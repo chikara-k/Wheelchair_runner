@@ -53,7 +53,7 @@ Post.create!(
       toilet: true,
       recommend_level: 5,
       road_level: 3,
-      parking: 3,
+      parking: 2,
       rental_bicycle: false,
       address: "宮崎県宮崎市○○○２ー７ー３"
     },

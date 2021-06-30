@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :event_users, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   attachment :profile_image
 
