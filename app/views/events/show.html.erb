@@ -48,14 +48,25 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-4 border-left text-center">
+    <div class="col-md-4 border-left">
       <h3 class="text-center" style="padding: 20px 0;">〜 参加者一覧 〜</h3>
-      <h5><%= @event.user.name %>（作成者）</h5>
-      <%# @event_users.each do |f| %>
-        <%#= f.user.name %>
-      <%# end %>
+      <h5 class="pb-3  text-center"><%= @event.user.name %>（作成者）</h5>
+      <% @event.event_users.each do |f| %>
+        <h5 class="pb-3  text-center">
+          ・<%= f.user.name %>
+          <%# if f.user == current_user %>
+            <%#= link_to "削除", event_event_user_path(f.event_id, @event_user), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+          <%# end %>
+        </h5>
+      <% end %>
       <div>
-
+      <%= form_with(model:[@event, @event_user], local: true) do |f| %>
+        <p class="text-right">
+          <%= f.radio_button :is_attend, true %>
+          <%= f.label :is_attend, "参加する" %>
+        </p>
+        <div class="text-right"><%= f.submit "送信する", class: "btn btn-success" %></div>
+      <% end %>
       </div>
     </div>
   </div>
