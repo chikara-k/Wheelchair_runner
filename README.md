@@ -30,7 +30,7 @@ Miyazaki Wheelchair Runner<br>
 ### 設計書・インフラ構成図
 <!--<img width="950" alt="インフラ構成図" src="https://user-images.githubusercontent.com/75741350/121875212-2ad46e80-cd43-11eb-9ad5-95391b3b7997.png">-->
 
- - [ER図](https://drive.google.com/drive/u/0/folders/1O0kWSGdGOlY1MqVdKaeg-B1eikrO9lEP) (draw.io)
+ - [ER図](https://drive.google.com/file/d/1zpixlj0WnB-vpX6EqUON70nrIfD5lNXW/view?usp=sharing) (draw.io)
 
  - [テーブル定義書](https://docs.google.com/spreadsheets/d/1X5vSH1DfPpQ8ylAWjc3ZewuXVI1mvEyblwx0sk5vDyw/edit?usp=sharing) (スプレッドシート)
 
