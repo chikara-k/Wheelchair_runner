@@ -2,9 +2,10 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
-      
+
   date:
     order:
       - :year
       - :month
       - :day
+

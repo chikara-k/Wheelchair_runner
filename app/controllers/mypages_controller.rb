@@ -1,4 +1,6 @@
 class MypagesController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(current_user.id)
     @user_mypage = User.find(params[:id])
@@ -18,6 +20,19 @@ class MypagesController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def confirm
+    @user = User.find(params[:id])
+  end
+
+  def hide
+    @user = User.find(current_user.id)
+    @user.update(is_active: false)
+    p @user
+    reset_session
+    flash[:notice] = "退会しました。"
+    redirect_to root_path
   end
 
   private

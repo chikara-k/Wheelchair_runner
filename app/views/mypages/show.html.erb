@@ -7,7 +7,7 @@
     <div class="col-md-6 pt-4 border-right" style="margin-left: 0;">
       <div class="row">
         <div class="col-md-12 text-center">
-          <%= attachment_image_tag @user_mypage, :profile_image, :size => '100x120' %><br>
+          <%= attachment_image_tag @user_mypage, :profile_image, :size => '100x120', fallback: "no_image.png" %><br>
           <h5><%= @user_mypage.name %></h5>
           <%= @user_mypage.user_status %> 経験：<%= @user_mypage.experience %>年<br>
           <%= @user_mypage.introduction %>
