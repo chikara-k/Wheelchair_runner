@@ -1,2 +1,55 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h3 style="padding: 20px 0;">新規イベント登録</h3>
+      <%= form_with model: @event, url: event_path(@event), local: true do |f| %>
+        <table class="table table-borderless">
+          <tr class="d-flex">
+            <th class="col-md-3"><%= f.label :title, "イベント名" %></th>
+            <td class="col-md-9"><%= f.text_field :title, class: 'form-control' %></td>
+          </tr>
+          <tr class="d-flex">
+            <th class="col-md-3"><%= f.label :begin_time, "開始日時" %></th>
+            <td class="col-md-9"><%= f.datetime_field :begin_time %></td>
+          </tr>
+          <tr class="d-flex">
+            <th class="col-md-3"><%= f.label :finish_time, "終了日時" %></th>
+            <td class="col-md-8"><%= f.datetime_field :finish_time %></td>
+          </tr>
+          <tr class="d-flex">
+            <th class="col-md-3"><%= f.label :place, "場所" %></th>
+            <td class="col-md-8"><%= f.text_field :place %></td>
+          </tr>
+          <tr class="d-flex">
+            <th><%= f.label :genre, "ジャンル" %></th>
+            <td>
+              <%= f.radio_button :genre, "練習会" %>
+              <%= f.label :genre, "練習会" %>
+            </td>
+            <td>
+              <%= f.radio_button :genre, "交流会" %>
+              <%= f.label :genre, "交流会" %>
+            </td>
+            <td>
+              <%= f.radio_button :genre, "大会" %>
+              <%= f.label :genre, "大会" %>
+            </td>
+            <td>
+              <%= f.radio_button :genre, "その他" %>
+              <%= f.label :genre, "その他" %>
+            </td>
+          </tr>
+          <tr class="d-flex">
+            <th class="col-md-3"><%= f.label :image, "画像" %></th>
+            <td class="col-md-6"><%= f.attachment_field :image %></td>
+          </tr>
+          <tr class="d-flex">
+            <th class="col-md-3"><%= f.label :memo, "詳細" %></th>
+            <td class="col-md-8"><%= f.text_area :memo, class: 'form-control' %></td>
+          </tr>
+        </table>
+        <%= f.submit "編集する", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

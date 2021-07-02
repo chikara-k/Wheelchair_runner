@@ -18,11 +18,17 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event)
+    else
+      render :edit
+    end
   end
 
   def show
     @event = Event.find(params[:id])
-    @event_user = EventUser.new
+    @event_users = EventUser.where(event_id: @event.id)
   end
 
   def destroy

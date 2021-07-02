@@ -14,7 +14,6 @@ class MypagesController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "登録情報が編集されました"
       redirect_to mypage_path(@user.id)
     else
       render "edit"

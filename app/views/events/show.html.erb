@@ -51,22 +51,22 @@
     <div class="col-md-4 border-left">
       <h3 class="text-center" style="padding: 20px 0;">〜 参加者一覧 〜</h3>
       <h5 class="pb-3  text-center"><%= @event.user.name %>（作成者）</h5>
-      <% @event.event_users.each do |f| %>
-        <h5 class="pb-3  text-center">
-          ・<%= f.user.name %>
-          <%# if f.user == current_user %>
-            <%#= link_to "削除", event_event_user_path(f.event_id, @event_user), method: :delete, class: "btn btn-outline-danger btn-sm" %>
-          <%# end %>
-        </h5>
+
+      <% @event_users.each do |f| %>
+        <%= link_to mypage_path(f.user), class: "text-dark" do %>
+          <h6 class="text-center"><%= f.user.name %></h6>
+        <% end %>
       <% end %>
-      <div>
-      <%= form_with(model:[@event, @event_user], local: true) do |f| %>
-        <p class="text-right">
-          <%= f.radio_button :is_attend, true %>
-          <%= f.label :is_attend, "参加する" %>
-        </p>
-        <div class="text-right"><%= f.submit "送信する", class: "btn btn-success" %></div>
-      <% end %>
+      <div class="text-center mt-3">
+        <% if @event.joined_by?(current_user) %>
+          <%= link_to event_event_user_path(@event), method: :delete do %>
+          <h6 class="btn btn-danger">参加しない</h6>
+          <% end %>
+        <% else %>
+          <%= link_to event_event_users_path(@event), method: :post do %>
+          <h6 class="btn btn-success">参加する</h6>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

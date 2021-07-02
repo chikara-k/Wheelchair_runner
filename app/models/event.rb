@@ -9,4 +9,8 @@ class Event < ApplicationRecord
   validates :finish_time, presence: true
 
   enum genre: { "練習会": 0, "交流会": 1, "大会": 2, "その他": 3 }
+
+  def joined_by?(user)
+    event_users.where(user_id: user.id).exists?
+  end
 end
