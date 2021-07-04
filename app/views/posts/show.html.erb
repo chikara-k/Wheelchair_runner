@@ -4,7 +4,7 @@
       <%= render 'posts/left_side', user: @user %>
     </div>
 
-    <div class="col-md-6 pt-4 pl-3 border-right">
+    <div class="col-md-9 pt-4 pl-3">
       <div class="row mb-1">
         <div class="col-md-12">
           <%= link_to mypage_path(@user_mypage), class: "text-dark text-decoration-none" do %>
@@ -16,12 +16,12 @@
         </div>
       </div>
       <div class="row mb-4">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= link_to post_path(@post) do %>
-            <%= attachment_image_tag @post, :image, :size => '170x220' %>
+            <%= attachment_image_tag @post, :image, :size => '200x300' %>
           <% end %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-5">
           <div class="row">
             <div class="col-md-12">
               <%= link_to post_path(@post), :style => "color:black;" do %>
@@ -85,20 +85,31 @@
               </ol>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              ー〒住所ー<br>
-              <%= @post.address %>
-            </div>
-          </div>
           <div class="row mt-2">
             <div class="col-md-12">
+              <label>ー紹介文ー</label>
+              <p><%= @post.introduction %></p>
               <% if @post.user == current_user %>
                 <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary"%>
                 <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger"%>
               <% end %>
             </div>
           </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div id='map'></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              ー〒住所ー<br>
+              <input id="address" type="textbox" value="<%= @post.address %>">
+              <input type="button" value="検索" onclick="codeAddress()">
+            </div>
+          </div>
+
         </div>
       </div>
       <% @post.comments.each do |comment| %>
@@ -127,8 +138,49 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3 text-center">
-      <%= render 'posts/right_side' %>
-    </div>
   </div>
 </div>
+
+<!--map-->
+<style>
+  #map {
+    height: 260px;
+    width: 260px;
+  }
+</style>
+
+<script>
+  let map
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 31.91111, lng:131.42389},
+      zoom: 12,
+    });
+  }
+
+  let geocoder
+
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });
+  }
+</script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAP_KEY'] %>&callback=initMap&libraries=&v=weekly"
+  async
+>
+</script>

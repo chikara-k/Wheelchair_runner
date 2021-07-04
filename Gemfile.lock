@@ -294,7 +294,7 @@ DEPENDENCIES
   fullcalendar-rails
   jbuilder (~> 2.5)
   jquery-rails
-  listen (>= 3.0.5, < 3.2)
+  listen
   momentjs-rails
   mysql2
   puma (~> 3.11)

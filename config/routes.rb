@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only:[:create, :destroy]
     resource :likes, only: [:create, :destroy]
+    get 'map_request', to: 'posts#map', as: 'map_request'
   end
   resources :mypages, only: [:show, :edit, :update] do
     member do
