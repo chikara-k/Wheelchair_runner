@@ -53,14 +53,5 @@ Miyazaki Wheelchair Runner<br>
 - Ruby 2.6.3
 - Rails 5.2.5
 
-### 本番環境
-- AWS(EC2, RDS for MySQL, Route53, ACM, ALB)
-- MySQL 5.7.22
-- Nginx, Puma
-
-### テスト
-- RSpec
-- GitHubActions(CI/CD)
-
 ## 使用素材
 freepik https://www.freepik.com/
