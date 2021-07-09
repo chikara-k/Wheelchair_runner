@@ -54,5 +54,5 @@ Miyazaki Wheelchair Runner<br>
 - Rails 5.2.5
 
 ## 使用素材
-freepik https://www.freepik.com/
-illustAC https://www.ac-illust.com/
+- freepik https://www.freepik.com/
+- illustAC https://www.ac-illust.com/
