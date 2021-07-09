@@ -4,21 +4,21 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <%= link_to image_tag("WR_logo.png", :size => '170x60'), "/" %>
+      <%= link_to image_tag("WR_logo.png", :size => '200x90'), "/" %>
 
        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
          <ul class="navbar-nav justify-content-end">
           <% if user_signed_in? %>
-            <li class="nav-item">
+            <li class="h4 mr-4">
               <b><%= link_to "投稿一覧", posts_path, class: "nav-link text-dark fab fa-accessible-icon" %></b>
             </li>
-            <li class="nav-item">
+            <li class="h4 mr-4">
               <%= link_to "イベント", events_path, class: "nav-link text-dark fas fa-calendar-alt" %>
             </li>
-            <li class="nav-item">
+            <li class="h4 mr-4">
               <%= link_to "マイページ", mypage_path(current_user), class: "nav-link text-dark fas fa-user" %>
             </li>
-            <li class="nav-item">
+            <li class="h4">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-dark fas fa-sign-out-alt" %>
             </li>
           <% end %>
