@@ -1,0 +1,8 @@
+- if pos.liked_by?(current_user) 
+  = link_to post_likes_path(pos.id), method: :delete, remote: true do
+    p.text-dark.text-decoration-none.fas.fa-thumbs-up
+      | #{pos.likes.count} いいね
+- else 
+  = link_to post_likes_path(pos.id), method: :post, remote: true do 
+    p.text-dark.text-decoration-none.far.fa-thumbs-up
+      | #{pos.likes.count} いいね

@@ -12,7 +12,7 @@ User.create!(
       email: 'test@test',
       password: 'aaaaaa',
       name: "太郎",
-      profile_image: File.open('./app/assets/images/user_boy.png'),
+      profile_image: File.open('./app/assets/images/no_image.png'),
       introduction: "初心者です。よろしくお願いします。",
       user_status: 0,
       experience: 1,
@@ -75,7 +75,7 @@ Post.create!(
   [
     {
       user_id: "1",
-      name: "運動公園",
+      name: "木花の運動公園",
       image: File.open('./app/assets/images/road.png'),
       introduction: "とても良いコースでした。工事も終わっているためきれいです！",
       toilet: true,
@@ -87,7 +87,7 @@ Post.create!(
     },
     {
       user_id: "2",
-      name: "運動公園",
+      name: "旭ヶ丘公園",
       image: File.open('./app/assets/images/road_2.png'),
       introduction: "とても良いところでした",
       toilet: true,
@@ -95,35 +95,35 @@ Post.create!(
       road_level: 3,
       parking: 2,
       rental_bicycle: false,
-      address: "宮崎県都城市○○○２ー７ー３"
+      address: "宮崎県都城市○○○３ー１２ー３"
     },
     {
       user_id: "3",
-      name: "運動公園",
+      name: "フェニックス動物園前",
       image: File.open('./app/assets/images/road.png'),
-      introduction: "とても良いところでした",
+      introduction: "走りやすいコースでした！",
       toilet: true,
-      recommend_level: 3,
+      recommend_level: 2,
       road_level: 1,
       parking: 0,
       rental_bicycle: true,
-      address: "宮崎県宮崎市○○○２ー７ー３"
+      address: "宮崎県延岡市○○○３ー１ー６"
     },
     {
       user_id: "4",
-      name: "運動公園",
+      name: "シーガイア周辺ロード",
       image: File.open('./app/assets/images/road.png'),
-      introduction: "とても良いところでした",
+      introduction: "坂が多かったのでとても鍛えられるコースでした",
       toilet: true,
       recommend_level: 3,
-      road_level: 1,
+      road_level: 4,
       parking: 0,
       rental_bicycle: true,
       address: "宮崎県宮崎市○○○２ー７ー３"
     },
     {
       user_id: "5",
-      name: "運動公園",
+      name: "青嶋トロピカルロード",
       image: File.open('./app/assets/images/road.png'),
       introduction: "とても良いところでした",
       toilet: true,
@@ -131,28 +131,28 @@ Post.create!(
       road_level: 1,
       parking: 0,
       rental_bicycle: true,
-      address: "宮崎県宮崎市○○○２ー７ー３"
+      address: "宮崎県日向市○○○２ー５ー２"
     },
     {
       user_id: "6",
-      name: "運動公園",
+      name: "大淀川河川敷",
       image: File.open('./app/assets/images/road.png'),
-      introduction: "とても良いところでした",
+      introduction: "気持ちが良いロードでした！",
       toilet: true,
-      recommend_level: 3,
-      road_level: 1,
+      recommend_level: 5,
+      road_level: 2,
       parking: 0,
       rental_bicycle: true,
-      address: "宮崎県宮崎市○○○２ー７ー３"
+      address: "宮崎県宮崎市○○○１ー７１ー１"
     },
     {
       user_id: "7",
-      name: "運動公園",
+      name: "生目の森運動公園",
       image: File.open('./app/assets/images/road.png'),
-      introduction: "とても良いところでした",
+      introduction: "道が凸凹してました",
       toilet: true,
-      recommend_level: 3,
-      road_level: 1,
+      recommend_level: 1,
+      road_level: 3,
       parking: 0,
       rental_bicycle: true,
       address: "宮崎県宮崎市○○○２ー７ー３"

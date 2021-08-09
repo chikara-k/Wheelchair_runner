@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-3.text-center
+      = render 'posts/left_side', user: @user
+ 
+
+    .col-md-6.pt-4.pl-3.border-right
+      = render 'posts/all_posts', all_posts: @all_posts 
+
+    .col-md-3.text-center
+      = render 'posts/right_side'

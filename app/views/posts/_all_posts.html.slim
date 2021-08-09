@@ -1,0 +1,98 @@
+- all_posts.each do |pos|
+  .row.mb-1
+    .col-md-12
+      = link_to mypage_path(pos.user_id), class: "text-dark text-decoration-none" do
+        = image_tag pos.user.profile_image_url, :size => '40x40'
+        = pos.user.name
+
+
+  .row.mb-4
+    .col-md-4
+      = link_to post_path(pos) do
+        = attachment_image_tag pos, :image, :size => '170x220'
+    .col-md-8
+      .row
+        .col-md-12
+          = link_to post_path(pos), class: "text-dark text-decoration-none" do
+            h5.font-weight-bold = pos.name
+
+      .row
+        .col-md-5
+          ol.list-unstyled
+            li おすすめ度
+            li レベル
+            li 多目的トイレ
+            li 駐車場
+            li レンタル自転車
+
+        .col-md-7
+          .list-unstyled
+            -if pos.recommend_level == 1
+              li ★
+            -elsif pos.recommend_level == 2
+              li ★★
+            -elsif pos.recommend_level == 3
+              li ★★★
+            -elsif pos.recommend_level == 4
+              li ★★★★
+            -elsif pos.recommend_level == 5
+              li ★★★★★
+            -else
+              liー
+
+            -if pos.road_level == nil
+              li ー
+            -else
+              li Lv.#{pos.road_level}
+
+            -if pos.toilet == true
+              li
+                |
+                .fas.fa-toilet
+                |あり
+            -elsif pos.toilet == false
+              li なし
+            -else
+              liー
+
+            -if pos.parking == "無料あり"
+              li
+              |
+              .fas.fa-parking 
+              |あり(無料)
+            -elsif pos.parking == "有料あり"
+              li
+              |
+              .fas.fa-parking 
+              |あり(有料)
+            -elsif pos.parking == "なし"
+              li なし
+            -else
+              li ー
+
+            -if pos.rental_bicycle == true
+              li
+              |
+              .fas.fa-bicycle 
+              |あり
+            -elsif pos.rental_bicycle == false
+              li なし
+            -else
+              li ー
+
+      .row
+        .col-md-12
+          ー〒住所ー
+          br
+          = pos.address
+
+      .row.mt-2
+        .col-md-5
+          -if pos.commented_by?(current_user)
+            p = link_to " #{pos.comments.count} コメント", post_path(pos), class: "text-dark text-decoration-none fas fa-comment"
+          -else
+            p = link_to " #{pos.comments.count} コメント", post_path(pos), class: "text-dark text-decoration-none far fa-comment"
+
+        .col-md-5
+          .likes_buttons_#{pos.id}
+            = render 'likes/like', pos: pos
