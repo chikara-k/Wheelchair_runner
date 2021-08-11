@@ -1,0 +1,28 @@
+header.sticky-top
+  nav.navbar.navbar-expand-lg.navbar-light style="background-color: #FFFEF6;"
+    .container
+      button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+        |
+        span.navbar-toggler-icon
+        |
+      = link_to root_path do
+       =image_tag("WR_logo.png", :size => '200x90')
+
+       .collapse.navbar-collapse.justify-content-end.navbarNav
+         ul.navbar-nav.justify-content-end
+          - if user_signed_in?
+            li.h4.mr-4
+              = link_to posts_path, class: "nav-link text-dark fab fa-accessible-icon" do
+               b 投稿一覧
+
+            li.h4.mr-4
+              = link_to events_path, class: "nav-link text-dark fas fa-calendar-alt" do
+               | イベント
+
+            li.h4.mr-4
+              = link_to mypage_path(current_user), class: "nav-link text-dark fas fa-user" do
+               | マイページ
+
+            li.h4
+              = link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark fas fa-sign-out-alt" do
+               | ログアウト
